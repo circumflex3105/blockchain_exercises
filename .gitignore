@@ -30,4 +30,4 @@ replay_pid*
 /out
 
 # Maven
-/target
+*/target
