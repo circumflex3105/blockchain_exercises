@@ -21,6 +21,17 @@ public class JsonTest {
         String input = null;
 
         //then
-        Assertions.assertThrows(NullPointerException.class, () -> Main.getNameFromJson(input));
+        final NullPointerException nullException = Assertions.assertThrows(NullPointerException.class, () -> Main.getNameFromJson(input));
+        Assertions.assertEquals("Json is null!", nullException.getMessage());
+    }
+
+    @Test
+    void testBadInput() {
+        //given
+        String input = "BAD";
+
+        //then
+        final IllegalStateException illStateEx = Assertions.assertThrows(IllegalStateException.class, () -> Main.getNameFromJson(input));
+        Assertions.assertEquals("Not a JSON Object: \"BAD\"", illStateEx.getMessage());
     }
 }

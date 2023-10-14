@@ -11,6 +11,8 @@ public class Main {
     }
 
     public static String getNameFromJson(String json) {
+        if(json == null)
+            throw new NullPointerException("Json is null!");
         return new JsonParser().parse(json).getAsJsonObject().get("name").getAsString();
     }
 }
