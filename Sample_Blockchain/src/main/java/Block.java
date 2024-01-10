@@ -5,14 +5,15 @@ public class Block {
     final private String data;
 
     public Block(String data) {
-        this.first = true;
-        this.prevHash = null;
-        this.timestamp = System.currentTimeMillis();
-        this.data = data;
+        this(true, null, data);
     }
 
     public Block(String prevHash, String data) {
-        this.first = false;
+        this(false, prevHash, data);
+    }
+
+    private Block(boolean first, String prevHash, String data) {
+        this.first = first;
         this.prevHash = prevHash;
         this.timestamp = System.currentTimeMillis();
         this.data = data;
